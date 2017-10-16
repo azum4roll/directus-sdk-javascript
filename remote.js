@@ -191,8 +191,8 @@ class RemoteInstance {
     return this._get(`privileges/${id}/${table}`);
   }
 
-  updatePrivileges(id = requiredParam('id'), table = requiredParam('table')) {
-    return this._get(`privileges/${id}/${table}`);
+  updatePrivileges(groupId = requiredParam('groupId'), privId = requiredParam('privId'), data) {
+    return this._put(`privileges/${groupId}/${privId}`, data);
   }
 
   // Preferences
@@ -202,7 +202,7 @@ class RemoteInstance {
   }
 
   updatePreference(table = requiredParam('table'), data = {}) {
-    return this._update(`tables/${table}/preferences`, data);
+    return this._put(`tables/${table}/preferences`, data);
   }
 
   // Messages
@@ -276,7 +276,7 @@ class RemoteInstance {
   // Random
   // ----------------------------------------------------------------------------------
   getRandom(params = {}) {
-    return this._get('random', params);
+    return this._post('random', params);
   }
 }
 
