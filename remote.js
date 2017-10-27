@@ -87,6 +87,13 @@ class RemoteInstance {
     });
   }
 
+  // API Key
+  // ----------------------------------------------------------------------------------
+  requestToken(email = requiredParam('email'), password = requiredParam('password')) {
+    let params = {email, password};
+    return this._post(`auth/request-token`, params);
+  }
+
   // Items
   // ----------------------------------------------------------------------------------
   createItem(table = requiredParam('table'), data = {}) {
